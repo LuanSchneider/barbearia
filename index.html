@@ -1,17 +1,16 @@
 <html>
   <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="barbearia.css">
-    
-    <title>Barbearia Moderna - Estilo & Precisão</title>
-   
+    <link rel="stylesheet" href="/css/barbearia.css" />
+    <link rel="stylesheet" href="/css/sobre.css">
+
+    <title>Barbearia  - Estilo & Precisão</title>
   </head>
   <body>
     <header>
       <nav class="container">
-        <div class="logo">Barbearia Moderna</div>
+        <div class="logo">Barbearia</div>
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="sobre.html">Sobre</a>
@@ -21,7 +20,7 @@
     </header>
 
     <main class="container">
-      <h1>Bem-vindo à Barbearia Moderna</h1>
+      <h1>Bem-vindo à Barbearia</h1>
       <p>Agende seu horário e escolha o estilo perfeito para você.</p>
 
       <div class="booking-form">
@@ -41,14 +40,22 @@
           </div>
           <div class="form-group">
             <label for="haircut">Estilo de Corte:</label>
-            <input
-              type="text"
-              id="haircut"
-              name="haircut"
-              placeholder="Descreva o corte desejado"
-              required
-            />
+            <select id="haircut" name="haircut" required>
+              <option value="" disabled selected>Selecione o estilo de corte</option>
+              <option value="Corte Clássico" data-price="30">Corte Clássico</option>
+              <option value="Corte Degradê" data-price="40">Corte Degradê</option>
+              <option value="Corte Militar" data-price="35">Corte Militar</option>
+              <option value="Corte Undercut" data-price="45">Corte Undercut</option>
+              <option value="Corte Longo" data-price="50">Corte Longo</option>
+            </select>
           </div>
+          
+          <!-- Onde o preço do corte será exibido -->
+          <div class="form-group">
+            <label>Preço do Corte:</label>
+            <span id="haircutPrice">Selecione um corte para ver o preço</span>
+          </div>
+          
           <button type="submit">Agendar</button>
         </form>
       </div>
@@ -92,32 +99,50 @@
     </footer>
 
     <script>
-      document
-        .getElementById("appointmentForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+  document
+  .getElementById("appointmentForm")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-          const name = document.getElementById("name").value;
-          const date = document.getElementById("date").value;
-          const time = document.getElementById("time").value;
-          const haircut = document.getElementById("haircut").value;
+    const name = document.getElementById("name").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const haircut = document.getElementById("haircut").value;
+    const haircutPrice = document.getElementById("haircutPrice").innerText; // Corrigido para usar innerText
 
-          const appointmentInfo = {
-            name: name,
-            date: date,
-            time: time,
-            haircut: haircut,
-          };
+    const appointmentInfo = {
+      name: name,
+      date: date,
+      time: time,
+      haircut: haircut,
+      haircutPrice: haircutPrice,
+    };
 
-          // Simula o envio das informações para o proprietário
-          console.log("Agendamento recebido:", appointmentInfo);
-          alert(
-            "Agendamento realizado com sucesso! O proprietário entrará em contato para confirmar."
-          );
+    // Formatação da mensagem para o WhatsApp
+    const message = `*Novo Agendamento!*%0A*Nome:* ${name}%0A*Data:* ${date}%0A*Hora:* ${time}%0A*Corte escolhido:* ${haircut}%0A*Preço do corte:* ${haircutPrice}`;
 
-          // Aqui você pode adicionar código para enviar as informações para o servidor
-          // Por exemplo, usando fetch() para fazer uma requisição POST para sua API
-        });
+    const phoneNumber = "5553999996551"; // Insira o número de telefone do proprietário com código de país
+
+    // Envia diretamente para o WhatsApp do proprietário com a mensagem formatada
+    window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+    // Alerta de sucesso para o usuário
+    alert(
+      "Agendamento realizado com sucesso! O proprietário será notificado no WhatsApp."
+    );
+  });
+
+document.getElementById("haircut").addEventListener("change", function () {
+  const selectedOption = this.options[this.selectedIndex];
+  const price = selectedOption.getAttribute("data-price");
+
+  if (price) {
+    document.getElementById("haircutPrice").innerText = `R$ ${price},00`;
+  } else {
+    document.getElementById("haircutPrice").innerText =
+      "Selecione um corte para ver o preço";
+  }
+});
     </script>
   </body>
 </html>

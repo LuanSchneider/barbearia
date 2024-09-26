@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Barbearia Moderna</title>
+    <link rel="stylesheet" href="/css/contato.css" />
+    <link rel="stylesheet" href="/css/sobre.css">
+
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo">Barbearia </div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/sobre">Sobre</a>
+          <a href="/contato.html">Contato</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Entre em Contato</h1>
+      <div class="card">
+        <h2>Informações de Contato</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <p>Telefone</p>
+            <p>(11) 1234-5678</p>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <p>E-mail</p>
+            <p>contato@barbearia-moderna.com</p>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <p>Endereço</p>
+            <p>Rua da Barbearia, 123 - Centro</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Horário de Funcionamento</h2>
+        <p>Segunda a Sábado: 9h às 20h</p>
+        <p>Domingo: Fechado</p>
+      </div>
+
+      <div class="card">
+        <h2>Nossa Localização</h2>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1976900944246!2d-46.6528665!3d-23.5636538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1652892810000!5m2!1spt-BR!2sbr"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Envie-nos uma Mensagem</h2>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Seu Nome" required />
+          <input type="email" name="email" placeholder="Seu E-mail" required />
+          <textarea
+            name="message"
+            placeholder="Sua Mensagem"
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          // Aqui você implementaria a lógica para enviar o formulário
+          alert("Mensagem enviada com sucesso!");
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
