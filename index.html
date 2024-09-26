@@ -1,0 +1,123 @@
+<html>
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="barbearia.css">
+    
+    <title>Barbearia Moderna - Estilo & Precisão</title>
+   
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo">Barbearia Moderna</div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="/contato">Contato</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1>Bem-vindo à Barbearia Moderna</h1>
+      <p>Agende seu horário e escolha o estilo perfeito para você.</p>
+
+      <div class="booking-form">
+        <h2>Agende seu Corte</h2>
+        <form id="appointmentForm">
+          <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Horário:</label>
+            <input type="time" id="time" name="time" required />
+          </div>
+          <div class="form-group">
+            <label for="haircut">Estilo de Corte:</label>
+            <input
+              type="text"
+              id="haircut"
+              name="haircut"
+              placeholder="Descreva o corte desejado"
+              required
+            />
+          </div>
+          <button type="submit">Agendar</button>
+        </form>
+      </div>
+
+      <div class="service-list">
+        <div class="service-item">
+          <img
+            src="/img/classic.bmp"
+            alt="Homem com corte de cabelo clássico, estilo executivo"
+            width="250"
+            height="250"
+          />
+          <h3>Corte Clássico</h3>
+          <p>Um estilo tradicional e elegante para qualquer ocasião.</p>
+        </div>
+        <div class="service-item">
+          <img
+            src="img/estilo.bmp"
+            alt="Homem com barba bem aparada e estilizada"
+            width="250"
+            height="250"
+          />
+          <h3>Barba Estilizada</h3>
+          <p>Cuidados especiais para realçar sua masculinidade.</p>
+        </div>
+        <div class="service-item">
+          <img
+            src="/img/moderno.bmp"
+            alt="Jovem com corte de cabelo moderno e descolado"
+            width="250"
+            height="250"
+          />
+          <h3>Corte Moderno</h3>
+          <p>Tendências atuais para um visual contemporâneo.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Barbearia Moderna. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("appointmentForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const date = document.getElementById("date").value;
+          const time = document.getElementById("time").value;
+          const haircut = document.getElementById("haircut").value;
+
+          const appointmentInfo = {
+            name: name,
+            date: date,
+            time: time,
+            haircut: haircut,
+          };
+
+          // Simula o envio das informações para o proprietário
+          console.log("Agendamento recebido:", appointmentInfo);
+          alert(
+            "Agendamento realizado com sucesso! O proprietário entrará em contato para confirmar."
+          );
+
+          // Aqui você pode adicionar código para enviar as informações para o servidor
+          // Por exemplo, usando fetch() para fazer uma requisição POST para sua API
+        });
+    </script>
+  </body>
+</html>
