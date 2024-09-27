@@ -3,9 +3,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/barbearia.css" />
-    <link rel="stylesheet" href="/css/sobre.css">
+    <link rel="stylesheet" href="/css/sobre.css" />
 
-    <title>Barbearia  - Estilo & Precisão</title>
+    <title>Barbearia - Estilo & Precisão</title>
   </head>
   <body>
     <header>
@@ -16,9 +16,35 @@
           <a href="sobre.html">Sobre</a>
           <a href="/contato">Contato</a>
         </div>
+        <div class="burger-menu" id="burgerMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </nav>
     </header>
+    <nav class="menu-content" id="menuContent">
+      <div class="menu-header">
+        <h2>Menu</h2>
+        <span class="close-menu" id="closeMenu">&times;</span>
+      </div>
+      <div class="profile-section">
+        <div class="profile-pic">
+          <img
+            alt="Foto de perfil do usuário"
+            src="https://websim.creationengine.ai/default-avatar.jpg"
+            width="80"
+            height="80"
+          />
+        </div>
+        <div class="profile-name" id="profileName">Visitante</div>
+        <div class="auth-buttons">
+          <button class="login-btn" id="loginBtn">Login</button>
+          <button class="register-btn" id="registerBtn">Registrar</button>
+        </div>
+      </div>
 
+    </nav>
     <main class="container">
       <h1>Bem-vindo à Barbearia</h1>
       <p>Agende seu horário e escolha o estilo perfeito para você.</p>
@@ -41,21 +67,31 @@
           <div class="form-group">
             <label for="haircut">Estilo de Corte:</label>
             <select id="haircut" name="haircut" required>
-              <option value="" disabled selected>Selecione o estilo de corte</option>
-              <option value="Corte Clássico" data-price="30">Corte Clássico</option>
-              <option value="Corte Degradê" data-price="40">Corte Degradê</option>
-              <option value="Corte Militar" data-price="35">Corte Militar</option>
-              <option value="Corte Undercut" data-price="45">Corte Undercut</option>
+              <option value="" disabled selected>
+                Selecione o estilo de corte
+              </option>
+              <option value="Corte Clássico" data-price="30">
+                Corte Clássico
+              </option>
+              <option value="Corte Degradê" data-price="40">
+                Corte Degradê
+              </option>
+              <option value="Corte Militar" data-price="35">
+                Corte Militar
+              </option>
+              <option value="Corte Undercut" data-price="45">
+                Corte Undercut
+              </option>
               <option value="Corte Longo" data-price="50">Corte Longo</option>
             </select>
           </div>
-          
+
           <!-- Onde o preço do corte será exibido -->
           <div class="form-group">
             <label>Preço do Corte:</label>
             <span id="haircutPrice">Selecione um corte para ver o preço</span>
           </div>
-          
+
           <button type="submit">Agendar</button>
         </form>
       </div>
@@ -95,54 +131,9 @@
     </main>
 
     <footer>
-      <p>&copy; 2023 Barbearia Moderna. Todos os direitos reservados.</p>
+      <p>&copy; 2024 Barbearia. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-  document
-  .getElementById("appointmentForm")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
-    const haircut = document.getElementById("haircut").value;
-    const haircutPrice = document.getElementById("haircutPrice").innerText; // Corrigido para usar innerText
-
-    const appointmentInfo = {
-      name: name,
-      date: date,
-      time: time,
-      haircut: haircut,
-      haircutPrice: haircutPrice,
-    };
-
-    // Formatação da mensagem para o WhatsApp
-    const message = `*Novo Agendamento!*%0A*Nome:* ${name}%0A*Data:* ${date}%0A*Hora:* ${time}%0A*Corte escolhido:* ${haircut}%0A*Preço do corte:* ${haircutPrice}`;
-
-    const phoneNumber = "5553999996551"; // Insira o número de telefone do proprietário com código de país
-
-    // Envia diretamente para o WhatsApp do proprietário com a mensagem formatada
-    window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-
-    // Alerta de sucesso para o usuário
-    alert(
-      "Agendamento realizado com sucesso! O proprietário será notificado no WhatsApp."
-    );
-  });
-
-document.getElementById("haircut").addEventListener("change", function () {
-  const selectedOption = this.options[this.selectedIndex];
-  const price = selectedOption.getAttribute("data-price");
-
-  if (price) {
-    document.getElementById("haircutPrice").innerText = `R$ ${price},00`;
-  } else {
-    document.getElementById("haircutPrice").innerText =
-      "Selecione um corte para ver o preço";
-  }
-});
-    </script>
+    <script src="/js/animacao.js"></script>
   </body>
 </html>

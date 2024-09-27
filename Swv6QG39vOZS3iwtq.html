@@ -1,0 +1,198 @@
+<html>
+  <head>
+ 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Burguer com Perfil</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .burger-menu {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+      }
+      .burger-menu span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transition: all 0.3s ease;
+      }
+      .menu-content {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+      .menu-content.active {
+        left: 0;
+      }
+      .menu-header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .close-menu {
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+      .menu-items {
+        padding: 1rem;
+      }
+      .menu-items a {
+        display: block;
+        padding: 0.5rem 0;
+        color: #333;
+        text-decoration: none;
+      }
+      .profile-section {
+        padding: 1rem;
+        border-top: 1px solid #eee;
+      }
+      .profile-pic {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 1rem;
+        overflow: hidden;
+      }
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .profile-name {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .auth-buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+      .auth-buttons button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .login-btn {
+        background-color: #4caf50;
+        color: white;
+      }
+      .register-btn {
+        background-color: #008cba;
+        color: white;
+      }
+      .auth-buttons button:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="burger-menu" id="burgerMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1>Meu Site</h1>
+    </header>
+
+    <nav class="menu-content" id="menuContent">
+      <div class="menu-header">
+        <h2>Menu</h2>
+        <span class="close-menu" id="closeMenu">&times;</span>
+      </div>
+      <div class="profile-section">
+        <div class="profile-pic">
+          <img
+            alt="Foto de perfil do usuário"
+            src="https://websim.creationengine.ai/default-avatar.jpg"
+            width="80"
+            height="80"
+          />
+        </div>
+        <div class="profile-name" id="profileName">Visitante</div>
+        <div class="auth-buttons">
+          <button class="login-btn" id="loginBtn">Login</button>
+          <button class="register-btn" id="registerBtn">Registrar</button>
+        </div>
+      </div>
+      <div class="menu-items">
+        <a href="https://websim.creationengine.ai/home">Início</a>
+        <a href="https://websim.creationengine.ai/about">Sobre</a>
+        <a href="https://websim.creationengine.ai/services">Serviços</a>
+        <a href="https://websim.creationengine.ai/contact">Contato</a>
+      </div>
+    </nav>
+
+    <script>
+      const burgerMenu = document.getElementById("burgerMenu");
+      const menuContent = document.getElementById("menuContent");
+      const closeMenu = document.getElementById("closeMenu");
+      const loginBtn = document.getElementById("loginBtn");
+      const registerBtn = document.getElementById("registerBtn");
+      const profileName = document.getElementById("profileName");
+
+      burgerMenu.addEventListener("click", () => {
+        menuContent.classList.add("active");
+      });
+
+      closeMenu.addEventListener("click", () => {
+        menuContent.classList.remove("active");
+      });
+
+      loginBtn.addEventListener("click", () => {
+        const username = prompt("Digite seu nome de usuário:");
+        if (username) {
+          profileName.textContent = username;
+          loginBtn.style.display = "none";
+          registerBtn.style.display = "none";
+        }
+      });
+
+      registerBtn.addEventListener("click", () => {
+        const newUsername = prompt("Escolha um nome de usuário:");
+        if (newUsername) {
+          const password = prompt("Escolha uma senha:");
+          if (password) {
+            alert("Registro bem-sucedido!");
+            profileName.textContent = newUsername;
+            loginBtn.style.display = "none";
+            registerBtn.style.display = "none";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

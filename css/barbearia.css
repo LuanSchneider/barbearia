@@ -44,6 +44,8 @@ nav {
 }
 
 .nav-links a {
+  position: relative;
+left: 60vh;
   color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -64,6 +66,7 @@ h3 {
   align-items: center;
   justify-content: center;
   color: var(--primary-color);
+  color: aliceblue;
 }
 
 .booking-form {
@@ -138,6 +141,115 @@ footer {
   margin-top: 40px;
 }
 
+.burger-menu {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+}
+.burger-menu span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.menu-content {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+.menu-content.active {
+  left: 0;
+}
+.menu-header h2 {
+  position: relative;
+  left: 0vh;
+  bottom: 22vw;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:36.5vh ;
+  
+}
+.close-menu {
+  position: relative;
+  bottom: 25.7vw;
+  left: 36vh;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.menu-items {
+  padding: 1rem;
+}
+.menu-items a {
+  display: block;
+  padding: 0.5rem 0;
+  color: #333;
+  text-decoration: none;
+}
+.profile-section {
+  position: relative;
+  padding-bottom: 20vw;
+  right:  32vh;
+  
+  
+}
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+}
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-name {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.auth-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.login-btn {
+  background-color: #4caf50;
+  color: white;
+}
+.register-btn {
+  background-color: #008cba;
+  color: white;
+}
+.auth-buttons button:hover {
+  opacity: 0.9;
+}
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
@@ -153,3 +265,5 @@ footer {
     width: 16vh;
   }
 }
+
+
