@@ -45,7 +45,7 @@ nav {
 
 .nav-links a {
   position: relative;
-left: 60vh;
+  left: 60vh;
   color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -142,6 +142,8 @@ footer {
 }
 
 .burger-menu {
+  position: relative;
+  right: 175vh;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -180,8 +182,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width:36.5vh ;
-  
+  width: 36.5vh;
 }
 .close-menu {
   position: relative;
@@ -203,9 +204,7 @@ footer {
 .profile-section {
   position: relative;
   padding-bottom: 20vw;
-  right:  32vh;
-  
-  
+  right: 32vh;
 }
 .profile-pic {
   width: 80px;
@@ -265,5 +264,14 @@ footer {
     width: 16vh;
   }
 }
+@media (min-width: 1920px) {
+  .burger-menu {
+    width: 60px; /* Aumenta o tamanho em telas grandes */
+    height: 40px;
 
+  }
 
+  .burger-menu span {
+    right: 445px;
+  }
+}
